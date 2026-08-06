@@ -24,8 +24,11 @@ async function main(): Promise<void> {
   run('docker', ['compose', 'up', '-d', '--wait', ...config.composeServices]);
 
   // 2. Compile the contract (network-agnostic).
-  run('npm', ['run', 'compile']);
-
+run('compact', [
+  'compile',
+  'contracts/hello-world.compact',
+  'contracts/managed/hello-world',
+]);
   // 3. Deploy. Forward --network so deploy.ts sees the same network.
   const deployArgs = network === 'undeployed' ? [] : ['--', '--network', network];
   run('npm', ['run', 'deploy', ...deployArgs]);
