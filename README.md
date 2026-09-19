@@ -186,3 +186,6 @@ compiler to that version:
 compact update <version>
 compact use <version>
 ```
+
+---
+*Note: This repository is actively maintained.*
