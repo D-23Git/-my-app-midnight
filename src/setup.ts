@@ -38,3 +38,4 @@ main().catch((e) => {
   process.stderr.write(`\nSetup failed: ${(e as Error).message}\n`);
   process.exit(1);
 });
+
