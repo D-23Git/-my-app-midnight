@@ -97,6 +97,7 @@ async function createProviders(walletCtx: WalletContext) {
 async function main() {
   console.log('\n╔══════════════════════════════════════════════════════════════╗');
   console.log('║                   my-app CLI                           ║');
+  console.log('║           Midnight Level 1 Submission                  ║');
   console.log('╚══════════════════════════════════════════════════════════════╝\n');
 
   const rl = createInterface({ input: stdin, output: stdout });
