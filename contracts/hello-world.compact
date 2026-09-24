@@ -3,10 +3,14 @@ pragma language_version >= 0.23;
 import CompactStandardLibrary;
 
 // Public ledger state - visible on blockchain
+// This state can be read by anyone and is fully transparent.
 export ledger message: Opaque<"string">;
 
 // Circuit to store a message on the blockchain
 // The message will be publicly visible
+// We use a private witness (customMessage) to provide data to the circuit
 export circuit storeMessage(customMessage: Opaque<"string">): [] {
+    // disclose() is used deliberately to move data from the private witness
+    // into the public ledger state. This controls what becomes public.
     message = disclose(customMessage);
 }
