@@ -2,6 +2,27 @@
 
 A Midnight Network smart contract scaffolded with create-mn-app.
 
+## Midnight Level 1 — New Moon Submission
+
+### Initial Product Idea
+**Anonymous Voting System**
+A privacy-first voting platform where users can cast their votes without revealing their identity or choice publicly. The application leverages Midnight's zero-knowledge proofs to ensure that only the final tally is visible on the public ledger. Each vote is processed using a private witness, ensuring the voter's identity and specific vote remain hidden, while the zero-knowledge circuit mathematically proves the vote is valid and correctly added to the total. This solves the problem of coercion and lack of privacy in public blockchain governance.
+
+### Public State vs Private Witness
+In Midnight Network, data is divided between public state and private witness:
+- **Public State (Ledger State):** This is the data that is publicly visible on the Midnight blockchain. In our Compact contract, `export ledger message` defines state that anyone can read. It is used for data that needs to be transparent, such as the final result or aggregated data.
+- **Private Witness:** This is local, secret data held by the user off-chain. The witness is used to generate a zero-knowledge proof locally. The proof is then submitted to the network, verifying that the private data satisfies the contract's conditions without actually revealing the data itself. The `disclose()` function is used deliberately when we want to move data from the private domain into the public ledger state.
+
+### Submission Screenshots
+
+**Successful Compile Output**
+*(Circuits listed successfully)*
+![Compile Output](./assets/compile.png)
+
+**Contract Deployed**
+*(Deployed with address shown)*
+![Deploy Output](./assets/deploy.png)
+
 ## Quick start
 
 Requirements: Node 22, Docker (with Compose v2), and the Compact compiler at the version pinned in `.compact-version` at the create-mn-app repo root (the version this project was scaffolded against).
